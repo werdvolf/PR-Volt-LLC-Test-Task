@@ -43,12 +43,17 @@ function Todo() {
         label="Write what you want Todo"
         value={todoText}
         onChange={(event) => setTodoText(event.target.value)}
+        sx={{ marginBottom: "10px", width: "100%" }}
+        InputProps={{
+          endAdornment: (
+            <Button
+              buttonTitle="Create"
+              onClick={() => handleAdd(todoText)}
+              disabled={todoText.length <= 0}
+            />
+          ),
+        }}
       ></TextInput>
-      <Button
-        buttonTitle="Create"
-        onClick={() => handleAdd(todoText)}
-        disabled={todoText.length <= 0}
-      ></Button>
       <Dropdown
         label={"Sort Options"}
         value={sortOption}

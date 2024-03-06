@@ -6,7 +6,7 @@ type MyButtonProps = ButtonProps & {
 
 const MyButton = ({ buttonTitle, onClick, ...rest }: MyButtonProps) => {
   return (
-    <Button onClick={onClick} {...rest}>
+    <Button onClick={onClick} variant="outlined" {...rest}>
       {buttonTitle}
     </Button>
   )

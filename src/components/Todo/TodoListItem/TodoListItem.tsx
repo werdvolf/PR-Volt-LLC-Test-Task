@@ -32,6 +32,7 @@ const TodoListItem = ({ todo, onDelete, onStatusChange }: TodoProps) => {
           "&:hover": {
             textDecoration: "underline",
             cursor: "pointer",
+            color: "blue",
           },
         }}
         primary={todo.text}

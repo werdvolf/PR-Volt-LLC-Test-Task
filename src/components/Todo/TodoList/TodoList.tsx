@@ -1,6 +1,9 @@
+import React from "react"
 import List from "@mui/material/List"
 import { Todo } from "../../../store/slices/types"
 import TodoListItem from "../TodoListItem/TodoListItem"
+import Divider from "@mui/material/Divider"
+import { Typography } from "@mui/material"
 
 interface TodoListProps {
   todos: Todo[]
@@ -26,26 +29,28 @@ const ItemList = ({
 
   return (
     <>
-      <List
-        sx={{
-          width: "100%",
-          maxWidth: 360,
-          bgcolor: "#DCDCDC",
-          borderRadius: "15px",
-          boxShadow: "5px 5px 5px #D3D3D3",
-        }}
-      >
-        {filteredTodos.map((todo) => {
-          return (
-            <TodoListItem
-              key={todo.id}
-              todo={todo}
-              onDelete={onDelete}
-              onStatusChange={onStatusChange}
-            ></TodoListItem>
-          )
-        })}
-      </List>
+      {filteredTodos.length === 0 ? (
+        <Typography variant="h6">No todos available</Typography>
+      ) : (
+        <List
+          sx={{
+            width: "100%",
+            overflowY: "auto",
+            maxHeight: "300px",
+          }}
+        >
+          {filteredTodos.map((todo, index) => (
+            <React.Fragment key={todo.id}>
+              <TodoListItem
+                todo={todo}
+                onDelete={onDelete}
+                onStatusChange={onStatusChange}
+              />
+              {index < filteredTodos.length - 1 && <Divider />}
+            </React.Fragment>
+          ))}
+        </List>
+      )}
     </>
   )
 }
