@@ -13,6 +13,8 @@ import { addTodo, removeTodo, changeTodoStatus } from "../../store/slices/todo"
 import { v4 as uuidv4 } from "uuid"
 import { useState } from "react"
 
+import { MAX_TODO_LENGTH } from "../../constants"
+
 function Todo() {
   const dispatch = useDispatch<AppDispatch>()
   const todos = useSelector(selectTodo)
@@ -41,8 +43,11 @@ function Todo() {
 
   return (
     <>
-      <Typography variant="h3">ToDo`s List</Typography>
+      <Typography variant="h3" sx={{ margin: "10px auto", textAlign: "center" }}>
+        ToDo`s List
+      </Typography>
       <TextInput
+        maxLength={MAX_TODO_LENGTH}
         label="Write what you want Todo"
         value={todoText}
         onChange={(event) => setTodoText(event.target.value)}

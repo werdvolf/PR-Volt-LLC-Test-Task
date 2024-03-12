@@ -30,13 +30,23 @@ const ItemList = ({
   return (
     <>
       {filteredTodos.length === 0 ? (
-        <Typography variant="h6">No todos available</Typography>
+        <Typography
+          variant="h6"
+          sx={{
+            textAlign: "center",
+            maxHeight: "350px",
+            minHeight: "350px",
+          }}
+        >
+          No todos available
+        </Typography>
       ) : (
         <List
           sx={{
             width: "100%",
             overflowY: "auto",
-            maxHeight: "300px",
+            maxHeight: "350px",
+            minHeight: "350px",
           }}
         >
           {filteredTodos.map((todo, index) => (

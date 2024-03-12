@@ -13,7 +13,7 @@ type MyDropdownProps = {
 const MyDropdown = ({ label, value, options, handleChange }: MyDropdownProps) => {
   return (
     <>
-      <FormControl fullWidth>
+      <FormControl fullWidth sx={{ marginBottom: "10px" }}>
         <InputLabel>{label}</InputLabel>
         <Select
           value={value}

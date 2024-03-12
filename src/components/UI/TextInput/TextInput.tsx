@@ -1,9 +1,10 @@
 import { TextField, TextFieldProps } from "@mui/material"
 
-type MyTextInputProps = TextFieldProps
+type MyTextInputProps = TextFieldProps & {
+  maxLength: number
+}
 
-const MyTextInput = ({ ...rest }: MyTextInputProps) => {
-  const maxLength = 100
+const MyTextInput = ({ maxLength, ...rest }: MyTextInputProps) => {
   return (
     <TextField
       inputProps={{ maxLength: maxLength }}

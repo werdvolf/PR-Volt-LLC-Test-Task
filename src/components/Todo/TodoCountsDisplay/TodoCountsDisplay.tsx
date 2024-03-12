@@ -9,18 +9,17 @@ const TodoCountsDisplay = ({
   completed,
   notCompleted,
 }: TodoCountsDisplayProps) => {
-  const countStyle = {
-    fontSize: "14px",
-    margin: "10px 0",
-  }
-
   return (
     <div
       style={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "flex-end",
         textAlign: "center",
+        minHeight: "100%",
       }}
     >
-      <p style={countStyle}>
+      <p style={{ fontSize: "14px", margin: "10px 0" }}>
         All: {all} Completed: {completed} Not Completed: {notCompleted}
       </p>
     </div>
