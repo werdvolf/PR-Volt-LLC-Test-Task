@@ -1,6 +1,11 @@
 import { RootState } from ".."
+import { TODO_LOCAL_STORAGE_KEY } from "../../constants"
 
-export const selectTodo = (state: RootState) => state.todos
+export const selectTodo = (state: RootState) => {
+  const storedTodos = localStorage.getItem(TODO_LOCAL_STORAGE_KEY)
+  const todos = storedTodos ? JSON.parse(storedTodos) : state.todos
+  return todos
+}
 
 export const selectTodoCounts = (state: RootState) => {
   const all = state.todos.length
