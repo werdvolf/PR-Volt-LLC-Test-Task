@@ -1,4 +1,5 @@
 import TodoList from "./TodoList/TodoList"
+import TodoCountsDisplay from "./TodoCountsDisplay/TodoCountsDisplay"
 import TextInput from "../UI/TextInput/TextInput"
 import Button from "../UI/Button/Button"
 import Dropdown from "../UI/Dropdown/Dropdown"
@@ -6,14 +7,16 @@ import Dropdown from "../UI/Dropdown/Dropdown"
 import Typography from "@mui/material/Typography"
 
 import { useDispatch, useSelector } from "react-redux"
-import { AppDispatch, RootState } from "../../store"
+import { AppDispatch } from "../../store"
+import { selectTodo, selectTodoCounts } from "../../store/selectors"
 import { addTodo, removeTodo, changeTodoStatus } from "../../store/slices/todo"
 import { v4 as uuidv4 } from "uuid"
 import { useState } from "react"
 
 function Todo() {
   const dispatch = useDispatch<AppDispatch>()
-  const todos = useSelector((state: RootState) => state.todos)
+  const todos = useSelector(selectTodo)
+  const { all, completed, notCompleted } = useSelector(selectTodoCounts)
   const [todoText, setTodoText] = useState("")
   const [sortOption, setSortOption] = useState("")
   const sortOptions = ["All", "Completed", "Not Completed"]
@@ -66,6 +69,11 @@ function Todo() {
         onStatusChange={handleStatusChange}
         sortOption={sortOption}
       ></TodoList>
+      <TodoCountsDisplay
+        all={all}
+        completed={completed}
+        notCompleted={notCompleted}
+      ></TodoCountsDisplay>
     </>
   )
 }

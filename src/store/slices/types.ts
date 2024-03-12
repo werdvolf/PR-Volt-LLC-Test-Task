@@ -4,6 +4,12 @@ export type Todo = {
   status: boolean
 }
 
+export type InitialStateTodosAmount = {
+  all: number
+  completed: number
+  notCompleted: number
+}
+
 export interface InitialState {
   todos: Todo[]
 }
